@@ -1,18 +1,25 @@
 from openpyxl import Workbook, load_workbook
-
+import man, brad #some people certainly will brag about this.
+#open the current working book.
 receber = load_workbook('receber.xlsx', read_only=False)
 
-#LIMPA O CONTEÚDO DAS COLUNAS A-O (DADOS) DE UMA PLANILHA(ARG0)
-def purge_data(ws):
-    for r in range (7,150):
-        for c in range (1, 16):
-            print(ws , 'has been purged')
+#clears the old data from the workbook.
+man.purge_data({receber['VE09BRAD'],receber['AV09BRAD'],receber['VE28BRAD'],receber['AV28BRAD']},brad.INITIAL_ROW, brad.FINAL_ROW, brad.INITIAL_COLUMN, brad.FINAL_COLUMN)
 
-#LIMPEZA DAS PLANILHAS À VENCER E VENCIDO DE AMBAS AS CARTEIRAS(09/28)
-purge_data(receber['VE09BRAD'])
-purge_data(receber['AV09BRAD'])
-purge_data(receber['VE28BRAD'])
-purge_data(receber['AV28BRAD'])
 receber.save(filename='receber.xlsx')
+#converts xls worksheets to xlsx
+
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\VE09.xls')
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\AV09.xls')
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\VE28.xls')
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\AV28.xls')
+
+#loads the new datafiles into memory
+ve09 = load_workbook('VE09.xlsx')
+av09 = load_workbook('AV09.xlsx')
+ve28 = load_workbook('VE28.xlsx')
+av28 = load_workbook('AV28.xlsx')
+
+
 
 

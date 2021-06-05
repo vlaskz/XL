@@ -1,0 +1,5 @@
+#brad stands for bradesco, right?
+INITIAL_ROW=1
+FINAL_ROW=150
+INITIAL_COLUMN=1
+FINAL_COLUMN=16
