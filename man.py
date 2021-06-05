@@ -4,14 +4,14 @@
 def convert_xls_xlsx(xls):
     import win32com.client as win32 
     import os  
-    fname = xls
+    file = xls
     excel = win32.gencache.EnsureDispatch('Excel.Application')
-    wb = excel.Workbooks.Open(fname)
-    wb.SaveAs(fname+'x', FileFormat=51) #51 for xlsx/56 for xlsx
+    wb = excel.Workbooks.Open(file)
+    wb.SaveAs(file+'x', FileFormat=51) #51 for xlsx/56 for xlsx
     wb.Close()
     excel.Application.Quit()
-    os.system('cmd /c del '+fname)
-    print(fname + ' has been converted to '+fname+'x!')
+    os.system('cmd /c del '+file)
+    print(file + ' has been converted to '+file+'x!')
 
 
 #fills cells with no data.
