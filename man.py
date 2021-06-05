@@ -11,14 +11,14 @@ def convert_xls_xlsx(xls):
     wb.Close()
     excel.Application.Quit()
     os.system('cmd /c del '+fname)
+    print(fname + ' has been converted to '+fname+'x!')
 
 
 #fills cells with no data.
 #wb is workbook, sh is sheet, r is row, and c is column
 
-def purge(wb, r_ini, r_fin, c_ini, c_fin):
-    for sh in wb:
-        for r in range (r_ini,r_fin):
-            for c in range (c_ini, c_fin):
-                sh.cell(column=c, row=r).value = ""
-        print(sh , 'has been purged')   
+def purge(sh, r_ini, r_fin, c_ini, c_fin):
+    for r in range (r_ini,r_fin):
+        for c in range (c_ini, c_fin):
+            sh.cell(column=c, row=r).value = ""
+    print(sh , ' has been purged!')   
