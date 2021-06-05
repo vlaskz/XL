@@ -4,10 +4,10 @@ import man, brad #some people certainly will brag about this.
 
 
 #converts xls worksheets to xlsx - ok
-man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\VE09.xls',False)
-man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\AV09.xls',False)
-man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\VE28.xls',False)
-man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\AV28.xls',False)
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\VE09.xls',True)
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\AV09.xls',True)
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\VE28.xls',True)
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\AV28.xls',True)
 
 #loads the new datafiles into memory - ok
 VE09 = load_workbook('VE09.xlsx')
