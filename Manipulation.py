@@ -15,7 +15,6 @@ def convert_xls_xlsx(xls, erase_source_files):
         print('Source file has not been deleted.')
     print(file + ' has been converted to '+file+'x!')
 
-
 #fills cells with no data.
 #wb is workbook, sh is sheet, r is row, and c is column
 def purge_data(sh, r_ini, r_fin, c_ini, c_fin):
@@ -35,7 +34,13 @@ def fetch_data(source, destination, r_ini, r_fin, c_ini, c_fin):
 def clean_data(ws, r_ini, r_fin):
     for r in range (r_ini, r_fin):
         s = ws.cell(row=r, column=1).value
-        if(s.find('PAGO')!=-1):
+        if(s is not None and s.find('PAGO')!=-1):#check if its None and if it is paid.
             ws.delete_rows(r,1)
-            print(ws.title, '-> Row ',r,' has been erased. Already paid.')
+            print(ws.title, '-> Row ',r,' has been erased. Reason: Already paid.')
+
+#formats as float and adds currency symbol in the output values
+def format_currency_data(ws, c, r_ini, r_fin):
+    for r in range(r_ini, r_fin):
+        ws.cell(column = c, row = r).value = float(ws.cell(column = c, row = r))
+        ws.cell(column = c, row = r).number_format ='#.##0,00R$'
       
