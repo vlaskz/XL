@@ -15,6 +15,16 @@ def convert_xls_xlsx(xls, erase_source_files):
         print('Source file has not been deleted.')
     print(file + ' has been converted to '+file+'x!')
 
+#opens file in Excel for visualization
+def open_in_excel(filepath):
+    from win32com.client import Dispatch
+    print('Opening in ExceL: ', filepath)
+    xl=Dispatch("Excel.Application")
+    xl.Visible=True
+    wb = xl.Workbooks.Open(filepath)
+    wb.Close()
+    xl.Quit()
+
 #fills cells with no data.
 #wb is workbook, sh is sheet, r is row, and c is column
 def purge_data(sh, r_ini, r_fin, c_ini, c_fin):
@@ -41,6 +51,9 @@ def clean_data(ws, r_ini, r_fin):
 #formats as float and adds currency symbol in the output values
 def format_currency_data(ws, c, r_ini, r_fin):
     for r in range(r_ini, r_fin):
-        ws.cell(column = c, row = r).value = float(ws.cell(column = c, row = r))
-        ws.cell(column = c, row = r).number_format ='#.##0,00R$'
+        _cell = ws.cell(column = c, row = r)
+        if(_cell.value is not None and _cell.value != ''):
+            _cell.value = float(_cell.value.replace('.','').replace(',','.'))
+            _cell.number_format ='#.##0,00R$'
+            print(ws.title,':',_cell.value)
       
