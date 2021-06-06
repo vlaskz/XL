@@ -44,8 +44,8 @@ def clean_data(ws, r_ini, r_fin):
     for r in range (r_ini, r_fin):
         s = ws.cell(row=r, column=1).value
         if(s is not None and s.find('PAGO')!=-1):#check if its None and if it is paid.
-            ws.delete_rows(r,1)
-            print(ws.title, '-> Row ',r,' has been erased. Reason: Already paid.')
+            ws.cell(row=r,column=15).value = float(0.00)
+            print(ws.title, '-> Row ',r,' current value has been erased. Reason: Already paid.')
 
 #format as float and add currency symbol in the output values
 def format_currency_data(ws, c, r_ini, r_fin):
@@ -53,6 +53,6 @@ def format_currency_data(ws, c, r_ini, r_fin):
         _cell = ws.cell(column = c, row = r)
         if(_cell.value is not None and _cell.value != ''):
             _cell.value = float(_cell.value.replace('.','').replace(',','.'))
-            _cell.number_format ='#.##0,00R$'
+            _cell.number_format ='###0.00R$'
             #print('Sheet: ',ws.title,' Row:',r, ' Value: ',_cell.value)
       
