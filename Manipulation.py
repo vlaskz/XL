@@ -22,8 +22,7 @@ def open_in_excel(filepath):
     xl=Dispatch("Excel.Application")
     xl.Visible=True
     wb = xl.Workbooks.Open(filepath)
-    wb.Close()
-    xl.Quit()
+
 
 #fills cells with no data.
 #wb is workbook, sh is sheet, r is row, and c is column
@@ -38,7 +37,7 @@ def fetch_data(source, destination, r_ini, r_fin, c_ini, c_fin):
     for r in range(r_ini, r_fin):
         for c in range(c_ini, c_fin):
             destination.cell(row=r, column=c).value = source.cell(row=r, column=c).value
-    print(destination.title + ' has been fed by ' + source.title)
+    print(destination.title + ' has been graciously fed by ' + source.title)
 
 #it cleans the already paid bills
 def clean_data(ws, r_ini, r_fin):
@@ -48,12 +47,12 @@ def clean_data(ws, r_ini, r_fin):
             ws.delete_rows(r,1)
             print(ws.title, '-> Row ',r,' has been erased. Reason: Already paid.')
 
-#formats as float and adds currency symbol in the output values
+#format as float and add currency symbol in the output values
 def format_currency_data(ws, c, r_ini, r_fin):
     for r in range(r_ini, r_fin):
         _cell = ws.cell(column = c, row = r)
         if(_cell.value is not None and _cell.value != ''):
             _cell.value = float(_cell.value.replace('.','').replace(',','.'))
             _cell.number_format ='#.##0,00R$'
-            print(ws.title,':',_cell.value)
+            #print('Sheet: ',ws.title,' Row:',r, ' Value: ',_cell.value)
       

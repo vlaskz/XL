@@ -5,10 +5,10 @@ import Manipulation as man, Const_Bradesco as brd #some people certainly will br
 #converts xls worksheets to xlsx - ok
 #Set erase_source_files as False to prevent it. Useful in dev stage. Copy the
 #same files over and over again isn't something I appreciate.
-man.convert_xls_xlsx(r'c:\users\coder\Desktop\XL\VE09.xls',False)
-man.convert_xls_xlsx(r'c:\users\coder\Desktop\XL\AV09.xls',False)
-man.convert_xls_xlsx(r'c:\users\coder\Desktop\XL\VE28.xls',False)
-man.convert_xls_xlsx(r'c:\users\coder\Desktop\XL\AV28.xls',False)
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\VE09.xls',False)
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\AV09.xls',False)
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\VE28.xls',False)
+man.convert_xls_xlsx('c:\\users\\coder\\Desktop\\XL\\AV28.xls',False)
 
 #loads the new datafiles into memory - ok
 VE09 = load_workbook('VE09.xlsx')
@@ -42,5 +42,4 @@ man.format_currency_data(RECB['VE28BRAD'],brd.CUR_COL,brd.ROW_INI,RECB['VE28BRAD
 man.format_currency_data(RECB['AV28BRAD'],brd.CUR_COL,brd.ROW_INI,RECB['AV28BRAD'].max_row)
 
 RECB.save(filename='receber.xlsx')
-man.open_in_excel(r'c:\users\coder\Desktop\XL\receber.xls')
-
+man.open_in_excel(filepath='c:\\users\\coder\\Desktop\\XL\\receber.xlsx')
