@@ -1,4 +1,5 @@
 *.xlsx
 *.xls
+*.xlsm
 __pycache__/
 .vscode/launch.json

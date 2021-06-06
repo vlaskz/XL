@@ -2,6 +2,11 @@ from openpyxl import load_workbook
 import time
 import Manipulation as m, Const_Bradesco as b, DataSource as d, Configs as c #some people certainly will brag about this.
 
+
+#move older files to backup
+m.backup('xlsx')
+
+
 #converts xls worksheets to xlsx - ok
 #set erase_source_files as False to prevent it. Useful in dev stage. Copy the
 #same files over and over again isn't something I appreciate.
@@ -54,17 +59,14 @@ m.format_currency_data(RECBX['AV28BRAD'],b.CUR_COL,b.R_INI,RECBX['AV28BRAD'].max
 print(time.ctime(),'[main]: finishing currency data formatting in main workbook')
 
 print(time.ctime(),'[main]: saving main workbook')
-RECBX.save(filename='receber.xlsx')
+RECBX.save(d.RECBX)
+m.backup('xls')
+
 
 print(time.ctime(),'[main]: opening main workbook')
-m.open_in_excel(filepath=d.RECBX)
+m.open_in_excel(d.RECBX)
 
-print(d.VE09,' ',c.BKP_FLD)
-print(d.AV09,' ',c.BKP_FLD)
-print(d.VE28,' ',c.BKP_FLD)
-print(d.AV28,' ',c.BKP_FLD)
-
-#Part 3: Send receber.xlsx to email.
+#Part 3: Send RECBX to email.
 
 #sends emails to mail_listing
 print(time.ctime(),'[main]: starting sending main workbook to mailing list')

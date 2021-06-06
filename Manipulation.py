@@ -10,7 +10,7 @@ def convert_xls_xlsx(file):
     wb.SaveAs(file+'x', FileFormat=51) #51 for xlsx/56 for xls
     wb.Close()
     xl.Application.Quit()
-    print(time.ctime(),'[convert_xls_xlsx]: ',file,' has been converted to ',file,'x!')
+    print(time.ctime(),'[convert_xls_xlsx]: ',file,' has been converted to ',file+'x')
 
 #opens file in Excel for visualization
 def open_in_excel(filepath):
@@ -54,8 +54,8 @@ def format_currency_data(ws, c, r_ini, r_fin):
 def send_mail(mailing_list, file_list, message):
     print('mail sent')
 
-def move_file(origin, destination):
-    os.system('cmd /c move '+origin+' '+destination+ '/Y')
+def backup(filetype):
+    os.system('cmd /c move *.'+filetype+'.\\backup')
 
 def erase_file(file):
         os.system('cmd /c del '+file)
