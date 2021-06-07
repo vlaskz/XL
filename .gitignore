@@ -1,5 +1,8 @@
 *.xlsx
 *.xls
 *.xlsm
+*.OFX
+data/
+*.csv
 __pycache__/
 .vscode/launch.json

@@ -7,7 +7,7 @@ import Manipulation as m, Const_Bradesco as b, DataSource as d, Configs as c #so
 m.backup('xlsx')
 
 
-#converts xls worksheets to xlsx - ok
+#converts xls worksheets to xlsx
 #set erase_source_files as False to prevent it. Useful in dev stage. Copy the
 #same files over and over again isn't something I appreciate.
 print(time.ctime(),'[main]: starting data workbook conversion')
@@ -61,6 +61,7 @@ print(time.ctime(),'[main]: finishing currency data formatting in main workbook'
 print(time.ctime(),'[main]: saving main workbook')
 RECBX.save(d.RECBX)
 m.backup('xls')
+m.backup('xlsx')
 
 
 print(time.ctime(),'[main]: opening main workbook')

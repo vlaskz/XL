@@ -1,6 +1,7 @@
 #Disclaimer: man stands for manipulation, and not, I'll not argue with feminists..
 import time
 import os
+import DataSource as d
 
 #converts xls to xlsx using win32com library and excludes the xls files after successful conversion
 def convert_xls_xlsx(file):
@@ -48,16 +49,25 @@ def format_currency_data(ws, c, r_ini, r_fin):
     for r in range(r_ini, r_fin):
         _cell = ws.cell(column = c, row = r)
         if(_cell.value is not None and _cell.value != ''):
-            _cell.value = float(str(_cell.value).replace('.','').replace(',','.'))
-            _cell.number_format ='#,##0.00R$'
+           _cell.value = float(str(_cell.value).replace('.','').replace(',','.'))
+           _cell.number_format ='#,##0.00R$'
 
 def send_mail(mailing_list, file_list, message):
-    print('mail sent')
+    print('NOT IMPLEMENTED YET')
 
 def backup(filetype):
-    os.system('cmd /c move *.'+filetype+'.\\backup')
+    if(filetype=='xls'):
+        os.system('cmd /c move /Y '+d.VE09+' .\\backup')
+        os.system('cmd /c move /Y '+d.AV09+' .\\backup')
+        os.system('cmd /c move /Y '+d.VE28+' .\\backup')
+        os.system('cmd /c move /Y '+d.AV28+' .\\backup')
+        print('.xls files has been backed up')
+    if(filetype=='xlsx'):
+        os.system('cmd /c move /Y '+d.VE09X+' .\\backup')
+        os.system('cmd /c move /Y '+d.AV09X+' .\\backup')
+        os.system('cmd /c move /Y '+d.VE28X+' .\\backup')
+        os.system('cmd /c move /Y '+d.AV28X+' .\\backup')
+        print('.xls files has been backed up')
+    
 
-def erase_file(file):
-        os.system('cmd /c del '+file)
-        print(str(file)+' file has not been deleted.')
       
