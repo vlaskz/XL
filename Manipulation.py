@@ -4,7 +4,7 @@ import os
 import DataSource as d
 from openpyxl import load_workbook
 
-#logs message and shows whos called.
+#logs message and shows who called.
 def log(message):
     import inspect
     print(time.ctime(),' [',inspect.stack()[1][3],']: ', message)
@@ -29,11 +29,11 @@ def open_in_excel(filepath):
 
 #fills cells with no data.
 #wb is workbook, sh is sheet, r is row, and c is column
-def purge_data(sh, r_ini, r_fin, c_ini, c_fin):
+def purge_data(ws, r_ini, r_fin, c_ini, c_fin):
     for r in range (r_ini,r_fin):
         for c in range (c_ini, c_fin):
-            sh.cell(column=c, row=r).value = ""
-    log(str(sh)+' has been purged!') 
+            ws.cell(column=c, row=r).value = ""
+    log(str(ws)+' has been purged!') 
 
 #it does what it seems to do: fetch data.
 def fetch_data(source, destination, r_ini, r_fin, c_ini, c_fin):

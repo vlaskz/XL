@@ -1,6 +1,5 @@
 from openpyxl import load_workbook
-import time
-import Manipulation as m, Const_Bradesco as b, DataSource as d, Configs as c #some people certainly will brag about this.
+import Manipulation as m, Const_Bradesco as b, DataSource as d #some people certainly will brag about this.
 
 #PART ONE - Get the data
 #move older result(xlsx) files to backup folder
@@ -25,9 +24,9 @@ m.log('finishing workbook data loading')
 
 #clears the old data from the worksheets.
 m.log('starting cleaning data from main workbook')
-m.purge_data(RECBX['VE28BRAD'],b.R_INI,VE09X.active.max_row,b.C_INI,b.C_FIN)
+m.purge_data(RECBX['VE09BRAD'],b.R_INI,VE09X.active.max_row,b.C_INI,b.C_FIN)
 m.purge_data(RECBX['AV09BRAD'],b.R_INI,AV09X.active.max_row,b.C_INI,b.C_FIN)
-m.purge_data(RECBX['VE09BRAD'],b.R_INI,VE28X.active.max_row,b.C_INI,b.C_FIN)
+m.purge_data(RECBX['VE28BRAD'],b.R_INI,VE28X.active.max_row,b.C_INI,b.C_FIN)
 m.purge_data(RECBX['AV28BRAD'],b.R_INI,AV28X.active.max_row,b.C_INI,b.C_FIN)
 m.log('finishing cleaning data from main workbook')
 
